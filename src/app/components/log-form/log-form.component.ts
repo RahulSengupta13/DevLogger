@@ -26,6 +26,14 @@ export class LogFormComponent implements OnInit {
         this.date = log.date;
       }
     });
+
+    this.logService.stateClear.subscribe(clear => {
+      this.isNew = true;
+      this.submitButton = 'Add Log';
+      this.id = '';
+      this.date = '';
+      this.text = '';
+    });
   }
 
   onSubmit() {
@@ -44,7 +52,6 @@ export class LogFormComponent implements OnInit {
       };
       this.logService.updateLog(updatedLog);
     }
-
     this.clearState();
   }
 

@@ -17,14 +17,7 @@ export class LogService {
   logs: Log[];
 
   constructor() {
-    this.logs = [
-      {
-        id: '1',
-        date: new Date(),
-        text: 'Added Bootstrap'
-      }
-    ];
-    this.addToLocalStorage();
+    this.logs = [];
   }
 
   getLogs(): Observable<Log[]> {
@@ -68,9 +61,10 @@ export class LogService {
       }
     });
     this.addToLocalStorage();
+    this.clearState();
   }
 
-  clearState() {
+clearState() {
     this.stateSource.next(true);
   }
 }
